@@ -13,6 +13,14 @@ pipeline {
                // checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/vishwajitkumar5/mrvishu_java_app.git']]])
             }
         }
+        stage('Unit Test maven') {
+            steps {
+                script{
+                    
+                    mvnTest()
+                }
+            }
+        }
         
     }
 }
