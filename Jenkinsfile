@@ -5,7 +5,7 @@ pipeline {
 
     parameters{
 
-        choice(name: 'action', choices:'create\ndelete', descripation:'choose create/Destory')
+        choice(name: 'action', choices:'create\ndelete', description:'choose create/Destory')
     }
 
     stages {
@@ -13,8 +13,8 @@ pipeline {
         
         stage('Checkout') {
 
-            when{ expression{param.action == 'create'}}
-            
+            when{ expression{params.action == 'create'}}
+
             steps {
             gitCheckout(
                 branch: "main",
@@ -24,7 +24,7 @@ pipeline {
             }
         }
         stage('Unit Test maven') {
-            when{ expression{param.action == 'create'}}
+            when{ expression{params.action == 'create'}}
             steps {
                 script{
                     
@@ -33,7 +33,7 @@ pipeline {
             }
         }
         stage('Integration Test maven') {
-            when{ expression{param.action == 'create'}}
+            when{ expression{params.action == 'create'}}
             steps {
                 script{
                     
@@ -42,7 +42,7 @@ pipeline {
             }
         }
         stage('static code analysis: sonarqube') {
-            when{ expression{param.action == 'create'}}
+            when{ expression{params.action == 'create'}}
             steps {
                 script{
                     
