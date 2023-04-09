@@ -10,8 +10,11 @@ pipeline {
 
     stages {
         
-        when{ expression{param.action == 'create'}}
+        
         stage('Checkout') {
+
+            when{ expression{param.action == 'create'}}
+            
             steps {
             gitCheckout(
                 branch: "main",
