@@ -46,7 +46,8 @@ pipeline {
             steps {
                 script{
                     
-                    statiCodeAnalysis()
+                    def SonarqubecredentailsId = 'sonarqube-api'
+                    statiCodeAnalysis(SonarqubecredentailsId)
                 }
             }
         }
